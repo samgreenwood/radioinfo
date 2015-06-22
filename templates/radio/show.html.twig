@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>{{ site.name }} - {{ radio.name }}</h1>
+
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered" id="scans-table">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Signal</th>
+                    <th>Noise Floor</th>
+                    <th>Mac</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for client in radio.clients %}
+                    <tr>
+                        <td>{{ client.name }}</td>
+                        <td>
+                            {% if client.signal is defined %}
+                            {{ client.signal }}
+                            {% endif %}
+                        </td>
+                        <td>{{ client.noisefloor }}</td>
+                        <td>{{ client.mac }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+{% endblock %}
