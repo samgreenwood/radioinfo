@@ -8,6 +8,7 @@
                 <thead>
                 <tr>
                     <th>Radio</th>
+                    <th>SSID</th>
                     <th>Number of Clients</th>
                     <th>Frequency</th>
                     <th>&nbsp;</th>
@@ -17,6 +18,7 @@
                 {% for radio in site.radios %}
                     <tr>
                         <td>{{ radio.name }}</td>
+                        <td>{{ radio.ssid }}</td>
                         <th>{{ radio.numberOfClients }}</th>
                         <td>{{ radio.frequency }} mhz</td>
                         <td>

@@ -64,6 +64,19 @@ class UbiquitiRadio extends Radio
     }
 
     /**
+     * @return mixed
+     */
+    public function getSsid()
+    {
+        $session = $this->getSshSession();
+
+        $data = $session->getExec()->run('iwconfig ath0 | grep ESSID');
+        $data = explode(' ', $data);
+
+        return str_replace('"', '', explode(':', $data[9])[1]);
+    }
+
+    /**
      * @return Ssh\Session
      */
     private function getSshSession()
